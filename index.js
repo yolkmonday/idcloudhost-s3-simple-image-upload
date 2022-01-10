@@ -20,21 +20,21 @@ app.use(
     }),
 );
 
-
 app.post('/upload', upload.none(), (req, res) => {
-    buf = Buffer.from(
+    const buf = Buffer.from(
         req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ''),
         'base64',
     );
 
     const params = {
-        Bucket: 'invitamu', // pass your bucket name
-        Key: `${Math.floor(Date.now() / 1000)}.png`,
+        Bucket: 'your-bucket-name', // pass your bucket name
+        Key: `${Math.floor(Date.now() / 1000)}.png`, //here is your file name
         Body: buf,
         ACL: 'public-read',
         ContentEncoding: 'base64',
-        ContentType: 'image/png', // file will be saved as testBucket/contacts.csv
+        ContentType: 'image/png',
     };
+
     s3.upload(params, (s3Err, data) => {
         if (s3Err) {
             res.json({
