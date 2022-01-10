@@ -4,4 +4,4 @@ This is only simple API using express and multer to upload image [yap only image
 The code maybe can work with other platform using s3 protocol. In my case for s3 idcloudhost.
 
 # How to use ?
-## please copy .env-example to .env and fill the data with your config
+Please copy .env-example to .env and fill the data with your config
